@@ -15,8 +15,14 @@ jobs:
         goarch: [amd64]
 
     steps:
-      - name: Checkout code
+     - name: Checkout code
         uses: actions/checkout@v2
+
+      # Add debugging step to print contents of the build/release/linux directory
+      - name: Debug output
+        run: |
+          echo "Listing contents of build/release directory:"
+          ls -R ./build/release
 
       - name: Set up Go
         uses: actions/setup-go@v2
