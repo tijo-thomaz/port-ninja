@@ -15,7 +15,7 @@ jobs:
         goarch: [amd64]
 
     steps:
-     - name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v2
 
       # Add debugging step to print contents of the build/release/linux directory
