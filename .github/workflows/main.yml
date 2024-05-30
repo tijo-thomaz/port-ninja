@@ -18,12 +18,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Add debugging step to print contents of the build/release/linux directory
-      - name: Debug output
-        run: |
-          echo "Listing contents of build/release directory:"
-          ls -R ./build/release
-
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -34,11 +28,16 @@ jobs:
         shell: pwsh
         run: .\build.ps1
 
+      - name: Debug output
+        run: |
+          echo "Listing contents of build/release directory:"
+          ls -R ./build/release
+
       - name: Create release artifact
         uses: actions/upload-artifact@v2
         with:
           name: port_ninja_${{ matrix.goos }}_${{ matrix.goarch }}
-          path: port_ninja_${{ matrix.goos }}_${{ matrix.goarch }}
+          path: ./build/release
 
   release:
     runs-on: ubuntu-latest
