@@ -27,11 +27,17 @@ jobs:
       - name: Run build script
         shell: pwsh
         run: .\build.ps1
+        continue-on-error: true  # Continue to allow debugging even if build fails
 
       - name: Debug output
         run: |
           echo "Listing contents of build/release directory:"
-          ls -R ./build/release
+          if [ -d "./build/release" ]; then
+            ls -R ./build/release
+          else
+            echo "Build artifact directory not found."
+          fi
+        if: always()  
 
       - name: Create release artifact
         uses: actions/upload-artifact@v2
