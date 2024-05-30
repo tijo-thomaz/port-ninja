@@ -1,7 +1,7 @@
 # build.ps1
 
 # Create directories for storing built binaries
-$directories = @("build/release/linux", "build/release/darwin", "build/release/windows")
+$directories = @(".build/release/linux", ".build/release/darwin", ".build/release/windows")
 foreach ($directory in $directories) {
     if (-not (Test-Path $directory -PathType Container)) {
         New-Item -ItemType Directory -Path $directory | Out-Null
@@ -19,5 +19,5 @@ $targets = @(
 foreach ($target in $targets) {
     $env:GOOS = $target.GOOS
     $env:GOARCH = $target.GOARCH
-    go build -o "build/release/$($target.GOOS)/$($target.Output)" ./cmd/portkiller/main.go
+    go build -o ".build/release/$($target.GOOS)/$($target.Output)" ./cmd/portkiller/main.go
 }
