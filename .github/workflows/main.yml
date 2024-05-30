@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.18
-          node-version: 20
 
       - name: Run build script
         shell: pwsh
@@ -38,19 +37,32 @@ jobs:
             echo "Build artifact directory not found."
           fi
         if: always()  
+        # Always execute the debugging step, even if the previous step failed
 
-      - name: Create release artifact
+      - name: Upload Linux artifact
         uses: actions/upload-artifact@v2
         with:
-          name: port_ninja_${{ matrix.goos }}_${{ matrix.goarch }}
-          path: ./build/release
+          name: port_ninja_linux_amd64
+          path: ./build/release/linux/port_ninja_linux_amd64
+
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: port_ninja_darwin_amd64
+          path: ./build/release/darwin/port_ninja_darwin_amd64
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: port_ninja_windows_amd64.exe
+          path: ./build/release/windows/port_ninja_windows_amd64.exe
 
   release:
     runs-on: ubuntu-latest
     needs: build
 
     steps:
-      - name: Download binaries
+      - name: Download Linux binaries
         uses: actions/download-artifact@v2
         with:
           name: port_ninja_linux_amd64
