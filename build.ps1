@@ -11,5 +11,5 @@ $targets = @(
 foreach ($target in $targets) {
     $env:GOOS = $target.GOOS
     $env:GOARCH = $target.GOARCH
-    go build -o $target.Output ./cmd/main.go
+    go build -o $target.Output ./cmd/portkiller/main.go
 }
