@@ -1,6 +1,6 @@
-# PortNinja (PortKiller)
+# port-ninja (PortKiller)
 
-PortNinja is a powerful cross-platform command-line tool to terminate processes listening on specified ports. It helps developers and system administrators manage and free up ports effectively.
+port-ninja is a powerful cross-platform command-line tool to terminate processes listening on specified ports. It helps developers and system administrators manage and free up ports effectively.
 
 ## Features
 
@@ -14,31 +14,31 @@ PortNinja is a powerful cross-platform command-line tool to terminate processes 
 
 
 # Download the binary
-wget https://github.com/yourusername/PortNinja/releases/download/v1.0.0/portninja_linux_amd64.zip
+wget https://github.com/yourusername/port-ninja/releases/download/v1.0.0/port-ninja_linux_amd64.zip
 
 # Unzip the binary
-unzip portninja_linux_amd64.zip
+unzip port-ninja_linux_amd64.zip
 
 # Make the binary executable
-chmod +x portninja_linux_amd64
+chmod +x port-ninja_linux_amd64
 
 # Move the binary to a directory in your PATH
-sudo mv portninja_linux_amd64 /usr/local/bin/portninja
+sudo mv port-ninja_linux_amd64 /usr/local/bin/port-ninja
 
 
 ### Mac OS 
 
 # Download the binary
-curl -LO https://github.com/yourusername/PortNinja/releases/download/v1.0.0/portninja_darwin_amd64.zip
+curl -LO https://github.com/yourusername/port-ninja/releases/download/v1.0.0/port-ninja_darwin_amd64.zip
 
 # Unzip the binary
-unzip portninja_darwin_amd64.zip
+unzip port-ninja_darwin_amd64.zip
 
 # Make the binary executable
-chmod +x portninja_darwin_amd64
+chmod +x port-ninja_darwin_amd64
 
 # Move the binary to a directory in your PATH
-sudo mv portninja_darwin_amd64 /usr/local/bin/portninja
+sudo mv port-ninja_darwin_amd64 /usr/local/bin/port-ninja
 
 ### Windows
 
