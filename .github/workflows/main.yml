@@ -1,0 +1,58 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        goos: [linux, darwin, windows]
+        goarch: [amd64]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.18
+
+      - name: Build binary
+        run: |
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o port-ninja_${{ matrix.goos }}_${{ matrix.goarch }} ./cmd/portkiller
+
+      - name: Create release artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: port-ninja_${{ matrix.goos }}_${{ matrix.goarch }}
+          path: port-ninja_${{ matrix.goos }}_${{ matrix.goarch }}
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: port-ninja_linux_amd64
+        with:
+          name: port-ninja_darwin_amd64
+        with:
+          name: port-ninja_windows_amd64
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            port-ninja_linux_amd64
+            port-ninja_darwin_amd64
+            port-ninja_windows_amd64.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
