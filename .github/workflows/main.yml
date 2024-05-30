@@ -23,9 +23,9 @@ jobs:
         with:
           go-version: 1.18
 
-      - name: Build binary
-        run: |
-          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o port_ninja_${{ matrix.goos }}_${{ matrix.goarch }} ./cmd/main
+      - name: Run build script
+        shell: pwsh
+        run: .\build.ps1
 
       - name: Create release artifact
         uses: actions/upload-artifact@v2
@@ -43,7 +43,18 @@ jobs:
         with:
           name: port_ninja_linux_amd64
           path: ./build/release/linux
-        # Download other binaries for different platforms similarly
+
+      - name: Download macOS binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: port_ninja_darwin_amd64
+          path: ./build/release/darwin
+
+      - name: Download Windows binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: port_ninja_windows_amd64.exe
+          path: ./build/release/windows
 
       - name: Create GitHub Release
         id: create_release
@@ -59,12 +70,18 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Asset
+      - name: Upload Release Assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/release/linux/port_ninja_linux_amd64
-          asset_name: port_ninja_linux_amd64
+          asset_path: |
+            ./build/release/linux/port_ninja_linux_amd64
+            ./build/release/darwin/port_ninja_darwin_amd64
+            ./build/release/windows/port_ninja_windows_amd64.exe
+          asset_name: |
+            port_ninja_linux_amd64
+            port_ninja_darwin_amd64
+            port_ninja_windows_amd64.exe
           asset_content_type: application/octet-stream
