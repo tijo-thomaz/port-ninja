@@ -29,12 +29,7 @@ port-ninja is a powerful cross-platform command-line tool to terminate processes
     sudo mv port_ninja_linux_amd64 /usr/local/bin/port_ninja
     ```
 
-4. **Verify the installation**
-    ```sh
-    port_ninja --version
-    ```
-
-5. **Using Port Ninja**
+4. **Using Port Ninja**
     - To kill a process running on port 8080:
         ```sh
         port_ninja 8080
@@ -62,12 +57,7 @@ port-ninja is a powerful cross-platform command-line tool to terminate processes
     sudo mv port_ninja_darwin_amd64 /usr/local/bin/port_ninja
     ```
 
-4. **Verify the installation**
-    ```sh
-    port_ninja --version
-    ```
-
-5. **Using Port Ninja**
+4. **Using Port Ninja**
     - To kill a process running on port 8080:
         ```sh
         port_ninja 8080
@@ -95,13 +85,7 @@ port-ninja is a powerful cross-platform command-line tool to terminate processes
         - Click 'New' and add `C:\Program Files\PortNinja\` to the list.
         - Click 'OK' to close all dialog boxes.
 
-3. **Verify the installation**
-    - Open Command Prompt and run:
-        ```sh
-        port_ninja_windows_amd64.exe --version
-        ```
-
-4. **Using Port Ninja**
+3. **Using Port Ninja**
     - To kill a process running on port 8080:
         ```sh
         port_ninja_windows_amd64.exe 8080
