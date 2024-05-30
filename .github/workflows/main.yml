@@ -25,7 +25,7 @@ jobs:
 
       - name: Build binary
         run: |
-          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o port_ninja_${{ matrix.goos }}_${{ matrix.goarch }} ./cmd/portninja
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o port_ninja_${{ matrix.goos }}_${{ matrix.goarch }} ./cmd/main
 
       - name: Create release artifact
         uses: actions/upload-artifact@v2
