@@ -8,42 +8,105 @@ port-ninja is a powerful cross-platform command-line tool to terminate processes
 - Support for Linux, macOS, and Windows
 - Simple and intuitive command-line interface
 
-## Installation
+
+## Usage Notes for Each OS
 
 ### Linux
 
+#### Step-by-Step Instructions
 
-# Download the binary
-wget https://github.com/yourusername/port-ninja/releases/download/v1.0.0/port-ninja_linux_amd64.zip
+1. **Download the binary**
+    - Navigate to the [releases page](https://github.com/tijo-thomaz/port-ninja/releases).
+    - Download the `port_ninja_linux_amd64` binary.
 
-# Unzip the binary
-unzip port-ninja_linux_amd64.zip
+2. **Make the binary executable**
+    ```sh
+    chmod +x port_ninja_linux_amd64
+    ```
 
-# Make the binary executable
-chmod +x port-ninja_linux_amd64
+3. **Move the binary to a directory in your PATH**
+    ```sh
+    sudo mv port_ninja_linux_amd64 /usr/local/bin/port_ninja
+    ```
 
-# Move the binary to a directory in your PATH
-sudo mv port-ninja_linux_amd64 /usr/local/bin/port-ninja
+4. **Verify the installation**
+    ```sh
+    port_ninja --version
+    ```
 
+5. **Using Port Ninja**
+    - To kill a process running on port 8080:
+        ```sh
+        port_ninja 8080
+        ```
+    - To kill processes running on multiple ports (e.g., 8080, 9090):
+        ```sh
+        port_ninja 8080 9090
+        ```
 
-### Mac OS 
+### macOS
 
-# Download the binary
-curl -LO https://github.com/yourusername/port-ninja/releases/download/v1.0.0/port-ninja_darwin_amd64.zip
+#### Step-by-Step Instructions
 
-# Unzip the binary
-unzip port-ninja_darwin_amd64.zip
+1. **Download the binary**
+    - Navigate to the [releases page](https://github.com/yourrepo/releases).
+    - Download the `port_ninja_darwin_amd64` binary.
 
-# Make the binary executable
-chmod +x port-ninja_darwin_amd64
+2. **Make the binary executable**
+    ```sh
+    chmod +x port_ninja_darwin_amd64
+    ```
 
-# Move the binary to a directory in your PATH
-sudo mv port-ninja_darwin_amd64 /usr/local/bin/port-ninja
+3. **Move the binary to a directory in your PATH**
+    ```sh
+    sudo mv port_ninja_darwin_amd64 /usr/local/bin/port_ninja
+    ```
+
+4. **Verify the installation**
+    ```sh
+    port_ninja --version
+    ```
+
+5. **Using Port Ninja**
+    - To kill a process running on port 8080:
+        ```sh
+        port_ninja 8080
+        ```
+    - To kill processes running on multiple ports (e.g., 8080, 9090):
+        ```sh
+        port_ninja 8080 9090
+        ```
 
 ### Windows
 
-Download the binary from the releases page.
+#### Step-by-Step Instructions
 
-Unzip the binary. 
+1. **Download the binary**
+    - Navigate to the [releases page](https://github.com/tijo-thomaz/port-ninja/releases/).
+    - Download the `port_ninja_windows_amd64.exe` binary.
 
-Move the binary to a directory in your PATH or add its location to the PATH environment variable.
+2. **Move the binary to a directory in your PATH**
+    - You can place the binary in a directory like `C:\Program Files\PortNinja\` and add this directory to your system PATH:
+        - Right-click on 'This PC' or 'Computer' on the desktop or in File Explorer.
+        - Click on 'Properties'.
+        - Click on 'Advanced system settings'.
+        - Click on 'Environment Variables'.
+        - Under 'System variables', find the PATH variable, select it, and click 'Edit'.
+        - Click 'New' and add `C:\Program Files\PortNinja\` to the list.
+        - Click 'OK' to close all dialog boxes.
+
+3. **Verify the installation**
+    - Open Command Prompt and run:
+        ```sh
+        port_ninja_windows_amd64.exe --version
+        ```
+
+4. **Using Port Ninja**
+    - To kill a process running on port 8080:
+        ```sh
+        port_ninja_windows_amd64.exe 8080
+        ```
+    - To kill processes running on multiple ports (e.g., 8080, 9090):
+        ```sh
+        port_ninja_windows_amd64.exe 8080 9090
+        ```
